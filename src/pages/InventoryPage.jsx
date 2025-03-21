@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchInventory } from "../api";
-import InventoryList from "../components/inventoryList";
+import InventoryList from "../components copy/inventoryList";
 
 export default function InnventoryPage() {
   const [inventory, setInventory] = useState([]);

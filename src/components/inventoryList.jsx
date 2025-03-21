@@ -3,7 +3,6 @@ export default function InventoryList({ inventory }) {
     <ul>
       {inventory.map(({ _id, chemicalId, currentStock }) => (
         <li key={_id}>
-          <h3>Одиниця</h3>
           <span>{chemicalId.name}</span>
           <span>{currentStock}</span>
         </li>
@@ -11,4 +10,3 @@ export default function InventoryList({ inventory }) {
     </ul>
   );
 }
-//

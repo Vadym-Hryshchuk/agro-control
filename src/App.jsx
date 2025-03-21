@@ -1,10 +1,12 @@
 import "./App.css";
-import InnventoryPage from "./page/inventoryPage";
+import TransactionsPage from "./pages/TransactionsPage";
+// import InnventoryPage from "./pages/InventoryPage";
 
 export default function App() {
   return (
     <>
-      <InnventoryPage />
+      {/* <InnventoryPage /> */}
+      <TransactionsPage />
     </>
   );
 }
