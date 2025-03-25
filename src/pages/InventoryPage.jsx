@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchInventory } from "../api";
-import InventoryList from "../components copy/inventoryList";
+import InventoryList from "../components/InventoryList/InventoryList";
 
-export default function InnventoryPage() {
+export default function InventoryPage() {
   const [inventory, setInventory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,7 +26,12 @@ export default function InnventoryPage() {
   return (
     <>
       {isLoading && <b>Loading inventory...</b>}
-      {inventory.length > 0 && <InventoryList inventory={inventory} />}
+      <h1>Привіт. Це сторінка, яка показуватиме залишки ЗЗР</h1>
+      {inventory.length > 0 ? (
+        <InventoryList inventory={inventory} />
+      ) : (
+        <p>Ще не має введеного жодного засобу захисту рослин</p>
+      )}
     </>
   );
 }

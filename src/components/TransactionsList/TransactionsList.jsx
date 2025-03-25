@@ -1,5 +1,5 @@
-import transactionType from "../../utils/transactionType";
 import dateFormatting from "../../utils/dateFormatting";
+import transactionType from "../../utils/transactionType";
 import { Item } from "../TransactionsList//TransactionsList.styled";
 
 export default function TransactionList({ transactions, remove }) {
