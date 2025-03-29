@@ -16,8 +16,8 @@ export const addTransactions = async (value) => {
   const resp = await axios.post("/transactions", value);
   return resp.data;
 };
-export const removeTransactions = async (id) => {
-  const resp = await axios.delete("/transactions", id);
+export const removeTransactions = async (transactionId) => {
+  const resp = await axios.delete(`/transactions/${transactionId}`);
   return resp.data;
 };
 

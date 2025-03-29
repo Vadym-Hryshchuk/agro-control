@@ -35,14 +35,31 @@ export default function TransactionsPage() {
   }, []);
 
   const createTransactions = async (data) => {
-    const resp = await addTransactions(data);
-    const transaction = await fetchTransactions();
-    setTransactions(transaction);
-    toast.success(`${resp.message}`);
+    try {
+      setIsLoading(true);
+      const resp = await addTransactions(data);
+      const transaction = await fetchTransactions();
+      setTransactions(transaction);
+      toast.success(`${resp.message}`);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
   const deleteTransaction = async (id) => {
-    const resp = await removeTransactions(id);
-    console.log(resp);
+    try {
+      setIsLoading(true);
+      const resp = await removeTransactions(id);
+      const transaction = await fetchTransactions();
+      setTransactions(transaction);
+      toast.success(`${resp.message}`);
+    } catch {
+      //   setError(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
