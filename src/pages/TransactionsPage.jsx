@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
-import { addTransactions, fetchTransactions, fetchChemicals } from "../api";
+import {
+  addTransactions,
+  fetchTransactions,
+  fetchChemicals,
+  removeTransactions,
+} from "../api";
 import TransactionsForm from "../components/TransactionForm/TransactionForm";
 import TransactionList from "../components/TransactionsList/TransactionsList";
 
@@ -36,7 +41,8 @@ export default function TransactionsPage() {
     toast.success(`${resp.message}`);
   };
   const deleteTransaction = async (id) => {
-    console.log(id);
+    const resp = await removeTransactions(id);
+    console.log(resp);
   };
 
   return (
