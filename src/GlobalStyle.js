@@ -40,9 +40,9 @@ label {
   cursor: pointer;
 }
 
-  img {
+img {
     display: block;
     max-width: 100%;
-    height: auto;
+    height: 100%;
   }
 `;
