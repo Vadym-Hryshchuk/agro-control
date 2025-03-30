@@ -5,10 +5,8 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
-    // background-color:  #050505;
-      // width: 100%;
-    // height: 100vh;
+    background-color:  #050505;
+    color: white
   }
 
   h1, h2, h3, h4, h5, h6, p {
