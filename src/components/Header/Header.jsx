@@ -6,7 +6,8 @@ import {
   StyledHeader,
 } from "./Header.styled";
 import Logo from "../../img/LogoA.png";
-import AuthNav from "../AuthNav/AuthNav";
+// import AuthNav from "../AuthNav/AuthNav";
+import UserMenu from "../UserMenu/UserMenu";
 
 export default function Header() {
   return (
@@ -16,7 +17,8 @@ export default function Header() {
           <LogoImg src={Logo} alt="Logo" />
           <LogoText>НА ВАРТІ ВРОЖАЮ</LogoText>
         </LogoLink>
-        <AuthNav />
+        {/* <AuthNav /> */}
+        <UserMenu />
       </HeaderWrapper>
     </StyledHeader>
   );

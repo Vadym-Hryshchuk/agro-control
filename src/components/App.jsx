@@ -6,6 +6,7 @@ import TransactionsPage from "../pages/TransactionsPage";
 import ChemicalsPage from "../pages/ChemicalsPage";
 import WelcomePage from "../pages/WelcomePage";
 import SharedLayout from "./SharedLayout/SharedLayout";
+import NotFoundPage from "../pages/NotFoudPage";
 
 export default function App() {
   return (
@@ -13,10 +14,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<WelcomePage />} />
-          <Route path="a" element={<InventoryPage />} />
-          <Route path="b" element={<TransactionsPage />} />
-          <Route path="c" element={<ChemicalsPage />} />
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
+          <Route path="inventory" element={<InventoryPage />} />
+          <Route path="transactions" element={<TransactionsPage />} />
+          <Route path="chemicals" element={<ChemicalsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
       <Toaster />
