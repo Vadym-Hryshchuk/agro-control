@@ -5,6 +5,7 @@ import { addChemicals, fetchChemicals } from "../api";
 import ChemicalsForm from "../components/ChemicalsForm/ChemicalsForm";
 import ChemicalsList from "../components/ChemicalsList/ChemicalsList";
 import Loader from "../components/Loader/Loader";
+import PageTitle from "../components/PageTitle/PageTitle";
 
 export default function ChemicalsPage() {
   const [chemicals, setChemicals] = useState([]);
@@ -47,7 +48,7 @@ export default function ChemicalsPage() {
   return (
     <>
       {isLoading && <Loader />}
-      <h1>Введення ЗЗР</h1>
+      <PageTitle>Введення ЗЗР</PageTitle>
       <ChemicalsForm create={createChemicals} />
       {chemicals.length > 0 ? (
         <ChemicalsList chemicals={chemicals} remove={deleteChemicals} />
