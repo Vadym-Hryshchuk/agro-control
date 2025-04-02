@@ -13,7 +13,7 @@ export default function ChemicalsForm({ create }) {
     name: "",
     unit: "",
     description: "",
-    initialBalances: 0,
+    initialBalances: "",
   };
 
   const handleSubmit = (values, { resetForm }) => {
