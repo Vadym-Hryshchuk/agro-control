@@ -47,7 +47,7 @@ export default function ChemicalsPage() {
   return (
     <>
       {isLoading && <Loader />}
-      <h1>Введення засобів захисту рослин</h1>
+      <h1>Введення ЗЗР</h1>
       <ChemicalsForm create={createChemicals} />
       {chemicals.length > 0 ? (
         <ChemicalsList chemicals={chemicals} remove={deleteChemicals} />
