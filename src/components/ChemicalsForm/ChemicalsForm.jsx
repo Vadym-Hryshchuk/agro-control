@@ -2,10 +2,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const chemicalsSchema = Yup.object().shape({
-  name: Yup.string().required("This field is required"),
-  description: Yup.string().required("This field is required"),
-  initialBalances: Yup.number().min(1).required("This field is required"),
-  unit: Yup.string().required("This field is required"),
+  name: Yup.string().required("Це поле обов'язкове"),
+  description: Yup.string().required("Це поле обов'язкове"),
+  initialBalances: Yup.number()
+    .min(0, "Залишок не може бути від’ємним")
+    .required("Це поле обов'язкове"),
+  unit: Yup.string().required("Це поле обов'язкове"),
 });
 
 export default function ChemicalsForm({ create }) {
@@ -16,9 +18,15 @@ export default function ChemicalsForm({ create }) {
     initialBalances: "",
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    create(values);
-    resetForm();
+  const handleSubmit = async (values, { resetForm, setSubmitting }) => {
+    try {
+      await create(values);
+      resetForm();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

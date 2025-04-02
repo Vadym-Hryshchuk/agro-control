@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
+
+import { addChemicals, fetchChemicals } from "../api";
 import ChemicalsForm from "../components/ChemicalsForm/ChemicalsForm";
 import ChemicalsList from "../components/ChemicalsList/ChemicalsList";
-import { addChemicals, fetchChemicals } from "../api";
 
 export default function ChemicalsPage() {
-  // const [transactions, setTransactions] = useState([]);
   const [chemicals, setChemicals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -13,13 +13,10 @@ export default function ChemicalsPage() {
     async function getChemicals() {
       try {
         setIsLoading(true);
-        //   setError(false);
         const chemicalsData = await fetchChemicals();
-        // const chemicalsData = await fetchChemicals();
-        // setTransactions(data);
         setChemicals(chemicalsData);
       } catch {
-        //   setError(true);
+        toast.error("Щось пішло не так, спробуйте пізніше");
       } finally {
         setIsLoading(false);
       }
@@ -29,10 +26,18 @@ export default function ChemicalsPage() {
   }, []);
 
   const createChemicals = async (data) => {
-    const resp = await addChemicals(data);
-    const chemical = await fetchChemicals();
-    setChemicals(chemical);
-    toast.success(`${resp.message}`);
+    try {
+      setIsLoading(true);
+      const resp = await addChemicals(data);
+      const chemical = await fetchChemicals();
+      setChemicals(chemical);
+      toast.success(`${resp.message}`);
+    } catch ({ response }) {
+      toast.error(response.data.message);
+      throw new Error(response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
   const deleteChemicals = async (id) => {
     console.log(id);
