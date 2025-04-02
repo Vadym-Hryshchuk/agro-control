@@ -1,3 +1,5 @@
+import { StyledAppWrapper } from "./AppWrapper.styled";
+
 export default function AppWrapper({ children }) {
-  return <AppWrapper>{children}</AppWrapper>;
+  return <StyledAppWrapper>{children}</StyledAppWrapper>;
 }
