@@ -1,5 +1,8 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import ErrorText from "../InputMessage/ErrorText";
+import SuccessText from "../InputMessage/SuccessText";
+import { FieldStyled, SubButton, Wrapper } from "./ChemicalsForm.styled";
 
 const chemicalsSchema = Yup.object().shape({
   name: Yup.string().required("Це поле обов'язкове"),
@@ -14,8 +17,8 @@ export default function ChemicalsForm({ create }) {
   const initialValues = {
     name: "",
     unit: "",
-    description: "",
     initialBalances: "",
+    description: "",
   };
 
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
@@ -35,29 +38,83 @@ export default function ChemicalsForm({ create }) {
       validationSchema={chemicalsSchema}
       onSubmit={handleSubmit}
     >
-      <Form>
-        <div>
-          <label>Назва ЗЗР:</label>
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" component="span" />
-        </div>
-        <div>
-          <label>Одиниця виміру:</label>
-          <Field type="text" name="unit" />
-          <ErrorMessage name="unit" component="span" />
-        </div>
-        <div>
-          <label>Початковий залишок:</label>
-          <Field type="number" name="initialBalances" />
-          <ErrorMessage name="initialBalances" component="span" />
-        </div>
-        <div>
-          <label>Короткий опис:</label>
-          <Field type="text" name="description" />
-          <ErrorMessage name="description" component="span" />
-        </div>
-        <button type="submit">Додати</button>
-      </Form>
+      {({ touched, errors, values }) => (
+        <Form autoComplete="off">
+          <Wrapper>
+            <FieldStyled
+              type="text"
+              name="name"
+              placeholder="Назва ЗЗР"
+              className={
+                touched.name && errors.name
+                  ? "error"
+                  : values.name !== ""
+                  ? "correct"
+                  : "normal"
+              }
+            />
+            <ErrorMessage name="name" component={ErrorText} />
+            {touched.name && !errors.name && (
+              <SuccessText>Дані коректні</SuccessText>
+            )}
+          </Wrapper>
+          <Wrapper>
+            <FieldStyled
+              type="text"
+              name="unit"
+              placeholder="Одиниця виміру"
+              className={
+                touched.unit && errors.unit
+                  ? "error"
+                  : values.unit !== ""
+                  ? "correct"
+                  : "normal"
+              }
+            />
+            <ErrorMessage name="unit" component={ErrorText} />
+            {touched.unit && !errors.unit && (
+              <SuccessText>Дані коректні</SuccessText>
+            )}
+          </Wrapper>
+          <Wrapper>
+            <FieldStyled
+              type="number"
+              name="initialBalances"
+              placeholder="Початковий залишок"
+              className={
+                touched.initialBalances && errors.initialBalances
+                  ? "error"
+                  : errors.initialBalances
+                  ? "correct"
+                  : "normal"
+              }
+            />
+            <ErrorMessage name="initialBalances" component={ErrorText} />
+            {touched.initialBalances && !errors.initialBalances && (
+              <SuccessText>Дані коректні</SuccessText>
+            )}
+          </Wrapper>
+          <Wrapper>
+            <FieldStyled
+              component="textarea"
+              name="description"
+              placeholder="Короткий опис"
+              className={`textarea ${
+                touched.description && errors.description
+                  ? "error"
+                  : touched.description && !errors.description
+                  ? "correct"
+                  : "normal"
+              }`}
+            />
+            <ErrorMessage name="description" component={ErrorText} />
+            {touched.description && !errors.description && (
+              <SuccessText>Дані коректні</SuccessText>
+            )}
+          </Wrapper>
+          <SubButton type="submit">Додати</SubButton>
+        </Form>
+      )}
     </Formik>
   );
 }

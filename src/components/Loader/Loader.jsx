@@ -1,15 +1,7 @@
-import { Puff } from "react-loader-spinner";
+import { FadeLoader } from "react-spinners";
 
 export default function Loader() {
   return (
-    <Puff
-      visible={true}
-      height="80"
-      width="80"
-      color="#4fa94d"
-      ariaLabel="puff-loading"
-      wrapperStyle={{}}
-      wrapperClass=""
-    />
+    <FadeLoader color="#36d7b7" height={15} width={5} radius={2} margin={2} />
   );
 }

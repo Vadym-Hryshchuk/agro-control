@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { addChemicals, fetchChemicals } from "../api";
 import ChemicalsForm from "../components/ChemicalsForm/ChemicalsForm";
 import ChemicalsList from "../components/ChemicalsList/ChemicalsList";
+import Loader from "../components/Loader/Loader";
 
 export default function ChemicalsPage() {
   const [chemicals, setChemicals] = useState([]);
@@ -45,8 +46,8 @@ export default function ChemicalsPage() {
 
   return (
     <>
-      {isLoading && <b>Loading Chemicals...</b>}
-      <h1>Привіт. Це сторінка введення ЗЗР</h1>
+      {isLoading && <Loader />}
+      <h1>Введення засобів захисту рослин</h1>
       <ChemicalsForm create={createChemicals} />
       {chemicals.length > 0 ? (
         <ChemicalsList chemicals={chemicals} remove={deleteChemicals} />
