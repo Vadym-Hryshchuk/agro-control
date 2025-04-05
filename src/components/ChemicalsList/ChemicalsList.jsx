@@ -1,8 +1,10 @@
+import { DeleteButton, List, Section } from "./ChemicalsList.styled";
+
 export default function ChemicalsList({ chemicals, remove }) {
   return (
-    <>
-      <p>Останні додані операції</p>
-      <ul>
+    <Section>
+      <p>Перелік ЗЗР</p>
+      <List>
         {chemicals
           .sort((a, b) => a.name.localeCompare(b.name))
           .map(({ _id, name, unit, description, initialBalances }) => {
@@ -13,12 +15,12 @@ export default function ChemicalsList({ chemicals, remove }) {
                 <span>{initialBalances}</span>
                 <span>{description}</span>
                 <button type="button" onClick={() => remove(_id)}>
-                  Видалити
+                <DeleteButton />
                 </button>
               </li>
             );
           })}
-      </ul>
-    </>
+      </List>
+    </Section>
   );
 }
