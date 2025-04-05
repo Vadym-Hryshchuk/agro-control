@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import ErrorText from "../InputMessage/ErrorText";
 import SuccessText from "../InputMessage/SuccessText";
 import { FieldStyled, SubButton, Wrapper } from "./ChemicalsForm.styled";
+import AppWrapper from "../Wrapper/AppWrapper";
 
 const chemicalsSchema = Yup.object().shape({
   name: Yup.string().required("Це поле обов'язкове"),
@@ -33,6 +34,7 @@ export default function ChemicalsForm({ create }) {
   };
 
   return (
+    <AppWrapper>
     <Formik
       initialValues={initialValues}
       validationSchema={chemicalsSchema}
@@ -116,5 +118,6 @@ export default function ChemicalsForm({ create }) {
         </Form>
       )}
     </Formik>
+    </AppWrapper>
   );
 }

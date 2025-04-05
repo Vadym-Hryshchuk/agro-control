@@ -6,9 +6,9 @@ export default function SharedLayout() {
   return (
     <>
       <Header />
-      <AppWrapper>
+      {/* <AppWrapper> */}
         <Outlet />
-      </AppWrapper>
+      {/* </AppWrapper> */}
     </>
   );
 }

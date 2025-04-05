@@ -4,10 +4,12 @@ import Icon from '../../icons/delete.svg';
 
 export const Section = styled.section`
 margin-top: 12px;
+padding:10px;
 p {
 text-align: center;
 margin-bottom: 8px;
 }
+
 `
 export const List = styled.ul`
   li {
