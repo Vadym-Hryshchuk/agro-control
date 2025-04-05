@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchInventory } from "../api";
 import InventoryList from "../components/InventoryList/InventoryList";
+import Loader from "../components/Loader/Loader";
 
 export default function InventoryPage() {
   const [inventory, setInventory] = useState([]);
@@ -25,8 +26,8 @@ export default function InventoryPage() {
 
   return (
     <>
-      {isLoading && <b>Loading inventory...</b>}
-      <h1>Привіт. Це сторінка, яка показуватиме залишки ЗЗР</h1>
+      {isLoading && <Loader />}
+      <h1> Залишки ЗЗР</h1>
       {inventory.length > 0 ? (
         <InventoryList inventory={inventory} />
       ) : (
