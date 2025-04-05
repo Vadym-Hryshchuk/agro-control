@@ -9,6 +9,7 @@ import {
 } from "../api";
 import TransactionsForm from "../components/TransactionForm/TransactionForm";
 import TransactionList from "../components/TransactionsList/TransactionsList";
+import Loader from "../components/Loader/Loader";
 
 export default function TransactionsPage() {
   const [transactions, setTransactions] = useState([]);
@@ -64,8 +65,8 @@ export default function TransactionsPage() {
 
   return (
     <>
-      {isLoading && <b>Loading transactions...</b>}
-      <h1>Привіт. Це сторінка введення операцій по ЗЗР</h1>
+      {isLoading && <Loader />}
+      <h1>Операцій по ЗЗР</h1>
       <TransactionsForm create={createTransactions} options={chemicals} />
       {transactions.length > 0 ? (
         <TransactionList
