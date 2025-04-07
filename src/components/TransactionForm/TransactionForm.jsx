@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import AppWrapper from "../Wrapper/AppWrapper";
@@ -6,6 +6,7 @@ import ErrorText from "../InputMessage/ErrorText";
 import SuccessText from "../InputMessage/SuccessText";
 import { FieldStyled, Wrapper } from "./TransactionForm.styled";
 import ButtonSubmit from "./../ButtonSubmit/ButtonSubmit";
+import DatePickerField from "./../DatePickerField/DatePickerField";
 
 const TransactionsSchema = Yup.object().shape({
   chemicalId: Yup.string().required("Будь ласка, оберіть ЗЗР"),
@@ -13,7 +14,7 @@ const TransactionsSchema = Yup.object().shape({
     .oneOf(["income", "expense"])
     .required("Це поле обов'язкове"),
   quantity: Yup.number()
-    .min(1, "Це поле не може бути 0 чи менше 0")
+    .min(1, "Це поле не може бути < чи = 0")
     .required("Це поле обов'язкове"),
   date: Yup.date().required("Це поле обов'язкове"),
 });
@@ -21,7 +22,7 @@ const TransactionsSchema = Yup.object().shape({
 export default function TransactionsForm({ create, options }) {
   const initialValues = {
     chemicalId: "",
-    type: "income",
+    type: "",
     quantity: "",
     date: "",
   };
@@ -71,6 +72,7 @@ export default function TransactionsForm({ create, options }) {
                   <SuccessText>Дані коректні</SuccessText>
                 )}
               </Wrapper>
+
               <Wrapper>
                 <FieldStyled
                   component="select"
@@ -93,16 +95,43 @@ export default function TransactionsForm({ create, options }) {
                 )}
               </Wrapper>
 
-              <div>
-                <label>Quantity:</label>
-                <FieldStyled type="number" name="quantity" />
-                <ErrorMessage name="quantity" component="span" />
-              </div>
-              <div>
-                <label>Date:</label>
-                <Field type="date" name="date" />
-                <ErrorMessage name="date" component="span" />
-              </div>
+              <Wrapper>
+                <FieldStyled
+                  type="number"
+                  name="quantity"
+                  placeholder="Кількість"
+                  className={
+                    touched.quantity && errors.quantity
+                      ? "error"
+                      : values.quantity !== ""
+                      ? "correct"
+                      : "normal"
+                  }
+                />
+                <ErrorMessage name="quantity" component={ErrorText} />
+                {touched.quantity && !errors.quantity && (
+                  <SuccessText>Дані коректні</SuccessText>
+                )}
+              </Wrapper>
+
+              <Wrapper>
+                <FieldStyled
+                  type="date"
+                  name="date"
+                  component={DatePickerField}
+                  className={
+                    touched.date && errors.date
+                      ? "error"
+                      : values.date !== ""
+                      ? "correct"
+                      : "normal"
+                  }
+                />
+                <ErrorMessage name="date" component={ErrorText} />
+                {touched.date && !errors.date && (
+                  <SuccessText>Дані коректні</SuccessText>
+                )}
+              </Wrapper>
               <ButtonSubmit type="submit">Додати</ButtonSubmit>
             </Form>
           );
