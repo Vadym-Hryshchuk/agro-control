@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// axios.defaults.baseURL = "http://localhost:8080/api";
-axios.defaults.baseURL = "https://crop-protection-products.onrender.com/api";
+axios.defaults.baseURL = "http://localhost:8080/api";
+// axios.defaults.baseURL = "https://crop-protection-products.onrender.com/api";
 
 export const fetchInventory = async () => {
   const resp = await axios.get("/inventory");

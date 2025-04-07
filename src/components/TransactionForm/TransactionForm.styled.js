@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Field } from "formik";
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
 `;
+
 export const FieldStyled = styled(Field)`
   width: 300px;
   padding: 8px 10px;
@@ -21,6 +22,12 @@ export const FieldStyled = styled(Field)`
 
   &.correct {
     border-color: rgb(60, 188, 129);
+  }
+  &.textarea {
+    min-height: 65px;
+    max-height: 300px;
+    overflow-y: hidden;
+    resize: none;
   }
 
   @media screen and (min-width: 834px) {
