@@ -10,9 +10,12 @@ export default function TransactionList({ transactions, remove }) {
         {transactions
           .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
           .map(({ _id, chemicalId, type, quantity, date }) => {
+            console.log(chemicalId);
             return (
               <Item key={_id}>
-                <span>{chemicalId.name}</span>
+                <span>
+                  {chemicalId !== null ? chemicalId.name : "Видалена назва ЗЗР"}
+                </span>
                 <span>{transactionType(type)}</span>
                 <span>{quantity}</span>
                 <span>{dateFormatting(date)}</span>
