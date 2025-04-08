@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
-import { addChemicals, fetchChemicals } from "../api";
+import { addChemicals, fetchChemicals, removeChemicals } from "../api";
 import ChemicalsForm from "../components/ChemicalsForm/ChemicalsForm";
 import ChemicalsList from "../components/ChemicalsList/ChemicalsList";
 import Loader from "../components/Loader/Loader";
@@ -42,7 +42,18 @@ export default function ChemicalsPage() {
     }
   };
   const deleteChemicals = async (id) => {
-    console.log(id);
+    try {
+      setIsLoading(true);
+      const resp = await removeChemicals(id);
+      const chemical = await fetchChemicals();
+      setChemicals(chemical);
+      toast.success(`${resp.message}`);
+    } catch ({ response }) {
+      toast.error(response.data.message);
+      // throw new Error(response.data.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
