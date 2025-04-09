@@ -15,8 +15,10 @@ export const List = styled.ul`
     grid-template-columns: 2fr 1fr 1fr 3fr auto;
     align-items: center;
     gap: 4px;
+    padding: 4px 8px;
     font-size: 14px;
-    // border-bottom: 1px solid rgb(227, 255, 168);
+    border-radius: 12px;
+    border-bottom: 1px solid rgb(227, 255, 168);
 
     &:nth-child(odd) {
       background-color: rgba(227, 255, 168, 0.3);

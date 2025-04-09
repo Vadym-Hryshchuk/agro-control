@@ -61,11 +61,13 @@ export default function TransactionsForm({ create, options }) {
                   }
                 >
                   <option value="">Оберіть ЗЗР із списку</option>
-                  {options.map((option) => (
-                    <option key={option._id} value={option._id}>
-                      {option.name}
-                    </option>
-                  ))}
+                  {options
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((option) => (
+                      <option key={option._id} value={option._id}>
+                        {option.name}
+                      </option>
+                    ))}
                 </FieldStyled>
                 <ErrorMessage name="chemicalId" component={ErrorText} />
                 {touched.chemicalId && !errors.chemicalId && (
