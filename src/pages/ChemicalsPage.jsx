@@ -50,7 +50,7 @@ export default function ChemicalsPage() {
       toast.success(`${resp.message}`);
     } catch ({ response }) {
       toast.error(response.data.message);
-      // throw new Error(response.data.message);
+      throw new Error(response.data.message);
     } finally {
       setIsLoading(false);
     }

@@ -13,7 +13,6 @@ export default function TransactionList({ transactions, remove }) {
         {transactions
           .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
           .map(({ _id, chemicalId, type, quantity, date }) => {
-            console.log(chemicalId);
             return (
               <li key={_id}>
                 <span>

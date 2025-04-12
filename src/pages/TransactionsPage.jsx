@@ -39,11 +39,13 @@ export default function TransactionsPage() {
     try {
       setIsLoading(true);
       const resp = await addTransactions(data);
+      console.log(resp);
       const transaction = await fetchTransactions();
       setTransactions(transaction);
       toast.success(`${resp.message}`);
-    } catch (error) {
-      console.error(error);
+    } catch ({ response }) {
+      toast.error(response.data.message);
+      throw new Error(response.data.message);
     } finally {
       setIsLoading(false);
     }
