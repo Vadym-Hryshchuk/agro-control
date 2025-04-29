@@ -7,7 +7,7 @@ export default function UserMenu() {
       <StyledNavLink to="/inventory">Залишки</StyledNavLink>
       <StyledNavLink to="/transactions">Операції</StyledNavLink>
       <StyledNavLink to="/chemicals">ЗЗР</StyledNavLink>
-      <StyledIcon />
+      {/* <StyledIcon /> */}
     </div>
   );
 }
