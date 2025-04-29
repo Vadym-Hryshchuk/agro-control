@@ -1,12 +1,12 @@
 import { NavLink } from "react-router";
-import { StyledIcon } from "./UserMenu.styled";
+import { StyledIcon, StyledNavLink } from "./UserMenu.styled";
 
 export default function UserMenu() {
   return (
     <div>
-      <NavLink to="/inventory">Залишки</NavLink>
-      <NavLink to="/transactions">Операції</NavLink>
-      <NavLink to="/chemicals">ЗЗР</NavLink>
+      <StyledNavLink to="/inventory">Залишки</StyledNavLink>
+      <StyledNavLink to="/transactions">Операції</StyledNavLink>
+      <StyledNavLink to="/chemicals">ЗЗР</StyledNavLink>
       <StyledIcon />
     </div>
   );
