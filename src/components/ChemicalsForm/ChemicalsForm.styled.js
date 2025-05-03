@@ -32,6 +32,6 @@ export const FieldStyled = styled(Field)`
     width: 380px;
   }
   @media screen and (min-width: 1440px) {
-    width: 212px;
+    width: 244px;
   }
 `;

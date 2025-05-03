@@ -19,6 +19,6 @@ export const SubButton = styled.button`
     width: 380px;
   }
   @media screen and (min-width: 1440px) {
-    width: 212px;
+    width: 244px;
   }
 `;
